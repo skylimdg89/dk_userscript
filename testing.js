@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         TextAreaTesting
 // @namespace    http://tampermonkey.net/
-// @version      0.2.2
+// @version      0.2.3
 // @description  try to take over the world!
-// @author       You
+// @author       DK
 // @match        https://www.google.com/*
 // @match        https://www.google.com
 // @updateURL    https://raw.githubusercontent.com/skylimdg89/dk_userscript/master/testing.js
@@ -14,6 +14,7 @@
 
 // get elem from Google.com searchform
 // Testing...
+console.log("starting...");
 var search_div = document.getElementById("searchform");
 
 var text_div = document.createElement("div");
