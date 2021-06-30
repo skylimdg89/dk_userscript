@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TextAreaTesting
 // @namespace    http://tampermonkey.net/
-// @version      0.2.1
+// @version      0.2.2
 // @description  try to take over the world!
 // @author       You
 // @match        https://www.google.com/*
@@ -13,6 +13,7 @@
 
 
 // get elem from Google.com searchform
+// Testing...
 var search_div = document.getElementById("searchform");
 
 var text_div = document.createElement("div");
