@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TWIC Balance Checker
 // @namespace    http://tampermonkey.net/
-// @version      0.1.5
+// @version      0.1.6
 // @description  try to take over the world!
 // @author       dk.lim@unity3d.com
 // @match        https://client.twic.ai/claims
@@ -26,7 +26,7 @@ submit.onclick = display_balance;
 li1.appendChild(submit);
 
 function display_balance(){
-    var mytable = document.querySelector("#root > div > div > div > div > ul");
+    var mytable = document.querySelector("#root > div > div > main > div > ul")
     var mytable_length =mytable.children.length;
     console.log(mytable_length);
     var sum = 0;
