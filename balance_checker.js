@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         TWIC Balance Checker
 // @namespace    http://tampermonkey.net/
-// @version      0.1.6
+// @version      0.1.7
 // @description  try to take over the world!
 // @author       dk.lim@unity3d.com
-// @match        https://client.twic.ai/claims
+// @match        https://client.twic.ai/claims*
 // @updateURL    https://raw.githubusercontent.com/skylimdg89/dk_userscript/master/balance_checker.js
 // @downloadURL  https://raw.githubusercontent.com/skylimdg89/dk_userscript/master/balance_checker.js
 // @grant        GM.xmlHttpRequest
