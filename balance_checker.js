@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         TWIC Balance Checker
 // @namespace    http://tampermonkey.net/
-// @version      0.1.7
+// @version      0.1.9
 // @description  try to take over the world!
 // @author       dk.lim@unity3d.com
-// @match        https://client.twic.ai/claims*
+// @match        https://client.joinforma.com/claims*
 // @updateURL    https://raw.githubusercontent.com/skylimdg89/dk_userscript/master/balance_checker.js
 // @downloadURL  https://raw.githubusercontent.com/skylimdg89/dk_userscript/master/balance_checker.js
 // @grant        GM.xmlHttpRequest
@@ -31,11 +31,19 @@ function display_balance(){
     console.log(mytable_length);
     var sum = 0;
     var total_balance = 12 * 300000;
-    for(var i = 0; i < mytable_length; i++){
-        var amount = Number(mytable.children[i].innerText.split("\n")[0].split(" ")[0].replace(/[^0-9.-]+/g,""));;
-        console.log("i= " + i + ", " + amount);
-        sum += amount;
+    let regex_date = /\d{1,2}\/\d{1,2}\/2022/g;
+    let regex_amount = /^₩.*/
+    let data_array = []
+    for(var i = 1; i <= mytable_length; i++){
+        let date = document.querySelector(`li:nth-child(${i}) > a > div.sc-eEpejC.dmdnBN > div`).innerText.split('\n').slice(-1)[0]
+        if(date.match(regex_date)){
+            let amount = Number(document.querySelector(`li:nth-child(${i}) > a > div.sc-eEpejC.dmdnBN > span`).innerText.replace(/[^0-9.-]+/g,""))
+            console.log('date = ',date)
+            console.log('amount = ', amount)
+            sum += amount;
+        }
     }
+    console.log('data_array = ', data_array)
     console.log("Total Used = " + sum);
     var remaining = total_balance - sum;
     console.log("Total Remaining = " + new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(remaining));
