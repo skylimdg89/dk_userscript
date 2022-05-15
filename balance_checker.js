@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TWIC Balance Checker
 // @namespace    http://tampermonkey.net/
-// @version      0.1.9
+// @version      0.2.0
 // @description  try to take over the world!
 // @author       dk.lim@unity3d.com
 // @match        https://client.joinforma.com/claims*
@@ -43,6 +43,7 @@ function display_balance(){
             sum += amount;
         }
     }
+    console.log('###Balance Summary###')
     console.log('data_array = ', data_array)
     console.log("Total Used = " + sum);
     var remaining = total_balance - sum;
