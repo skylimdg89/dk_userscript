@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TWIC Balance Checker
 // @namespace    http://tampermonkey.net/
-// @version      0.2.0
+// @version      0.2.1
 // @description  try to take over the world!
 // @author       dk.lim@unity3d.com
 // @match        https://client.joinforma.com/claims*
@@ -34,16 +34,19 @@ function display_balance(){
     let regex_date = /\d{1,2}\/\d{1,2}\/2022/g;
     let regex_amount = /^₩.*/
     let data_array = []
+
     for(var i = 1; i <= mytable_length; i++){
-        let date = document.querySelector(`li:nth-child(${i}) > a > div.sc-eEpejC.dmdnBN > div`).innerText.split('\n').slice(-1)[0]
+        let date = document.querySelector(`#root > div > div > main > div > ul > li:nth-child(${i}) > a > div.sc-lbhYTY.gJgRan > div > span.sc-papXJ.sc-feINqK.eMmNuO.jKoOBu`).innerText
         if(date.match(regex_date)){
-            let amount = Number(document.querySelector(`li:nth-child(${i}) > a > div.sc-eEpejC.dmdnBN > span`).innerText.replace(/[^0-9.-]+/g,""))
-            console.log('date = ',date)
-            console.log('amount = ', amount)
-            sum += amount;
+            let amt = document.querySelector(`li:nth-child(${i}) > a > div.sc-lbhYTY.gJgRan > span`).innerText.replace(/[^0-9.-]+/g,"")
+
+            console.log('amt = ', amt)
+            console.log('date = ', date)
+            sum += parseInt(amt);
         }
+
     }
-    console.log('###Balance Summary###')
+    console.log('###Balance Summary for 2022###')
     console.log('data_array = ', data_array)
     console.log("Total Used = " + sum);
     var remaining = total_balance - sum;
